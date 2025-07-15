@@ -8,3 +8,7 @@ Route::get('/', function () {
 });
 
 Route::get('/hello', [HelloController::class, 'index']);
+
+Route::get('/about', function(){
+    return view('about');
+});

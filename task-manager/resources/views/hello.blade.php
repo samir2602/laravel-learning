@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Hello {{ $name }}</title>
-</head>
-<body>
-    <h1>Hello from a Blade view!</h1>
-</body>
-</html>
+@extends('layouts.app')
+
+@section('title', 'Hello Page')
+
+@section('content')
+    <h1>Hello, {{ $name }}</h1>
+    <p>Welcome to level 4 of your laravel game.</p>
+@endsection
