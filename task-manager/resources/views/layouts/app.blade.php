@@ -5,6 +5,10 @@
     <title>@yield('title')</title>
 </head>
 <body>
+    <nav>
+        <a href="/hello">Hello</a> |
+        <a href="/about">About</a>
+    </nav>
     <header>
         <h2>My Laravel App Header</h2>
     </header>
