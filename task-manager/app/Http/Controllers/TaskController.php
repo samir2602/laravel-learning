@@ -17,7 +17,25 @@ class TaskController extends Controller
     }
 
     public function store(Request $request){
-        Task::create($request->only(['title', 'descriptoin']));
+        $request->validate([
+            'title' => 'required|min:3'
+        ]);
+        
+        Task::create($request->only(['title', 'description']));
+        return redirect('/tasks');
+    }
+
+    public function edit(Task $task){
+        return view('tasks.edit', compact('task'));
+    }
+
+    public function update(Request $request, Task $task){
+        $task->update($request->only(['title', 'description']));
+        return redirect('/tasks');
+    }
+
+    public function destory(Task $task){
+        $task->delete();
         return redirect('/tasks');
     }
 }
