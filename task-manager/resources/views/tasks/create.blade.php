@@ -12,7 +12,7 @@
     </ul>
     @endif
 
-    <form method="POST" action="/tasks">
+    <form method="POST" action="{{ route('tasks.store') }}">
         @csrf
         <label>Title:</label>
         <input type="text" name="title">

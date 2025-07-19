@@ -22,7 +22,7 @@ class TaskController extends Controller
         ]);
         
         Task::create($request->only(['title', 'description']));
-        return redirect('/tasks');
+        return redirect()->route('tasks.index')->with('success', 'Task Created successfully');
     }
 
     public function edit(Task $task){
@@ -31,11 +31,11 @@ class TaskController extends Controller
 
     public function update(Request $request, Task $task){
         $task->update($request->only(['title', 'description']));
-        return redirect('/tasks');
+        return redirect()->route('tasks.index')->with('success', 'Task updated successfully');
     }
 
-    public function destory(Task $task){
+    public function destroy(Task $task){
         $task->delete();
-        return redirect('/tasks');
+        return redirect()->route('tasks.index')->with('success', 'Task Deleted');
     }
 }
