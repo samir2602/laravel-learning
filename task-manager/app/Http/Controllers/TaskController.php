@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use Illuminate\Http\Request;
+use App\Http\Requests\TaskRequest;
 
 class TaskController extends Controller
 {
@@ -16,12 +17,8 @@ class TaskController extends Controller
         return view('tasks.create');
     }
 
-    public function store(Request $request){
-        $request->validate([
-            'title' => 'required|min:3'
-        ]);
-        
-        Task::create($request->only(['title', 'description']));
+    public function store(TaskRequest $request){              
+        Task::create($request->validated());
         return redirect()->route('tasks.index')->with('success', 'Task Created successfully');
     }
 
@@ -33,8 +30,8 @@ class TaskController extends Controller
         return view('tasks.edit', compact('task'));
     }
 
-    public function update(Request $request, Task $task){
-        $task->update($request->only(['title', 'description']));
+    public function update(TaskRequest $request, Task $task){
+        $task->update($request->validated());
         return redirect()->route('tasks.index')->with('success', 'Task updated successfully');
     }
 
