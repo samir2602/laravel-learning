@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use App\Http\Requests\TaskRequest;
+use App\Models\TaskList;
+
 
 class TaskController extends Controller
 {
@@ -14,10 +16,11 @@ class TaskController extends Controller
     }
 
     public function create(){
-        return view('tasks.create');
+        $taskLists = TaskList::all();
+        return view('tasks.create', compact('taskLists'));        
     }
 
-    public function store(TaskRequest $request){              
+    public function store(TaskRequest $request){         
         Task::create($request->validated());
         return redirect()->route('tasks.index')->with('success', 'Task Created successfully');
     }
