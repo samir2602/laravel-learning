@@ -15,6 +15,9 @@ Route::get('/about', function(){
 });
 
 Route::resource('tasks', TaskController::class);
+// Route::get('/tasks-grouped', [TaskController::class, 'grouped'])->name('tasks.grouped');
+Route::get('/tasks-grouped', [TaskController::class, 'groupedTasks'])->name('tasks.grouped');
+
 
 // Route::get('/tasks', [TaskController::class, 'index']);
 // Route::get('/tasks/create', [TaskController::class, 'create']);

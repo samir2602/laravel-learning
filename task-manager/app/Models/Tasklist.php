@@ -9,6 +9,6 @@ class Tasklist extends Model
     protected $table = 'task_lists';
 
     public function tasks(){
-        return $this->hasMany(Task::class);
+        return $this->hasMany(Task::class, 'task_list_id');
     }
 }

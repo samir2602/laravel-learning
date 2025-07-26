@@ -42,4 +42,11 @@ class TaskController extends Controller
         $task->delete();
         return redirect()->route('tasks.index')->with('success', 'Task Deleted');
     }
+
+    public function groupedTasks()
+    {
+        $tasklists = TaskList::with('tasks')->get();        
+        return view('tasks.grouped', compact('tasklists'));
+    }
+
 }

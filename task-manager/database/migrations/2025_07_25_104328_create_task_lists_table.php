@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('task_lists', function (Blueprint $table) {
-            $table->id();
+            $table->id(); // Must be there
             $table->string('name');
             $table->timestamps();
         });
