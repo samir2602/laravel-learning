@@ -11,6 +11,7 @@
     <h1>All Tasks</h1>
 
     <a href="/tasks/create">Create New Task</a>
+    <a href="{{ route('tasks.grouped') }}">Grouped view</a>
 
     <ul>
         @foreach ($tasks as $task)

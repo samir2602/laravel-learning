@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tasklist extends Model
 {
     protected $table = 'task_lists';
+    protected $fillable = ['name'];
 
     public function tasks(){
         return $this->hasMany(Task::class, 'task_list_id');

@@ -8,7 +8,8 @@
     <nav>
         <a href="/hello">Hello</a> |
         <a href="/about">About</a> |
-        <a href="/tasks">Task</a>
+        <a href="/tasks">Task</a> |
+        <a href="/task-lists">Task List</a>
     </nav>
     <header>
         <h2>My Laravel App Header</h2>
