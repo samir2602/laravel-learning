@@ -23,6 +23,7 @@ class TaskRequest extends FormRequest
     {
         return [
             'title' => 'required|min:3|max:255',
+            'description' => 'required|min:10|max:255',
             'task_list_id' => 'required|exists:task_lists,id',
         ];
     }

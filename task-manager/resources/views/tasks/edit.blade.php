@@ -20,6 +20,12 @@
     <label>Description:</label>
     <textarea name="description">{{ $task->description}}</textarea>
 
+    <select name="task_list_id" required>
+        @foreach($taskLists as $list)
+            <option value="{{ $list->id }}" {{ ($list->id == $task->task_list_id) ? 'selected' : '' }}>{{ $list->name }}</option>
+        @endforeach
+    </select>
+
     <button type="submit">Save Task</button>
 </form>
 @endsection

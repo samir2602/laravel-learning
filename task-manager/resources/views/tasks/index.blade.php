@@ -18,12 +18,12 @@
         <li>
             <strong>{{ $task->title }}</strong>: {{ $task->description }}
             <td>{{ $task->taskList->name }}</td>
-            <a href="{{ route('tasks.show', $task->id) }}">Show</a>
-            <a href="{{ route('tasks.edit', $task->id) }}">Edit</a>
-            <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display:inline;">
+            <a href="{{ route('tasks.show', $task) }}">Show</a>
+            <a href="{{ route('tasks.edit', $task) }}" class="btn btn-sm btn-warning">Edit</a>
+            <form action="{{ route('tasks.destroy', $task) }}" method="POST" style="display:inline;">
                 @csrf
                 @method('DELETE')
-                <button type="submit">Delete</button>
+                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
             </form>
         </li>
         @endforeach
