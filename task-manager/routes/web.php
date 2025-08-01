@@ -1,29 +1,24 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HelloController;
-use App\Http\Controllers\TaskController;
-use App\Http\Controllers\TaskListController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hello', [HelloController::class, 'index']);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/about', function(){
-    return view('about');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::resource('tasks', TaskController::class);
+    Route::resource('task-lists', TaskListController::class);    
+    Route::get('/tasks-grouped', [TaskController::class, 'groupedTasks'])->name('tasks.grouped');
 });
 
-Route::resource('tasks', TaskController::class);
-Route::resource('task-lists', TaskListController::class);
-// Route::get('/tasks-grouped', [TaskController::class, 'grouped'])->name('tasks.grouped');
-Route::get('/tasks-grouped', [TaskController::class, 'groupedTasks'])->name('tasks.grouped');
 
-
-// Route::get('/tasks', [TaskController::class, 'index']);
-// Route::get('/tasks/create', [TaskController::class, 'create']);
-// Route::post('/tasks', [TaskController::class, 'store']);
-// Route::get('/tasks/{task}/edit', [TaskController::class, 'edit']);
-// Route::put('/tasks/{task}', [TaskController::class, 'update']);
-// Route::delete('/tasks/{task}', [TaskController::class, 'destory']);
+require __DIR__.'/auth.php';
